@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo List</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Indie+Flower">
+</head>
+<body>
+    <h1>Daily Todo List</h1>
+    <div class="totalList">
+        <div class="todoList">
+            <h2>Work</h2>
+            <div class="listContainer">
+                <ul id="workList" class="list"></ul>
+            </div>
+        </div> 
+        
+
+        <div class="todoList">
+            <h2>Study</h2>
+            <div class="listContainer">
+                <ul id="studyList" class="list"></ul>
+            </div>
+        </div>
+
+        <div class="todoList">
+            <h2>Habits</h2>
+            <div class="listContainer">
+                <ul id="habitsList" class="list"></ul>
+            </div>
+        </div>
+            
+        <div class="todoList">
+            <h2>Others</h2>
+            <div class="listContainer">
+                <ul id="othersList" class="list"></ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="new">
+        <h3>Add Todo Item:</h3>
+        <form id="newItem">
+            <input type="textarea" name="todo" placeholder="To Do Item">
+            <select name="category" id="todoCategory">
+                <optgroup>
+                <option value="work">Work</option>
+                <option value="study">Study</option>
+                <option value="habits">Habits</option>
+                <option value="others">Others</option>
+            </optgroup> 
+            </select>
+        </form>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

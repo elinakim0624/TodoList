@@ -1,19 +1,21 @@
-makeItem = function(name, category) {
-    const li = document.createElement('li');
+makeItem = function(name) {
+    const div = document.createElement('div');
     const del = document.createElement('button');
     const p = document.createElement('p');
-    p.append(name)
 
     del.append('-');
-    del.classList = 'deleteButton';
+    del.classList.toggle("button");
+    del.classList.toggle("is-danger");
+    del.classList.toggle("is-small");
 
-    li.append(p);
-    li.append(del);
+    p.append(name);
 
-    li.classList.toggle(category + "Item");
+    div.append(del);
+    div.append(p)
+    div.classList.toggle("panel-block");
 
-    console.log(li);
-    return li;
+    console.log(div);
+    return div;
 }
 
 const newItem = document.querySelector('#newItem');
@@ -24,38 +26,39 @@ newItem.addEventListener('submit', function(e) {
     const name = this.elements.todo;
     const category = this.elements.category;
 
-    li = makeItem(name.value, category.value);
+    div = makeItem(name.value);
 
     switch(category.value) {
         case 'work':
-            document.querySelector('#workList').append(li);
+            document.querySelector('#workListPanel').append(div);
             break;
         case 'study':
-            document.querySelector('#studyList').append(li);
+            document.querySelector('#studyListPanel').append(div);
             break;
         case 'habits':
-            document.querySelector('#habitsList').append(li);
+            document.querySelector('#habitsListPanel').append(div);
             break;
         case 'others':
-            document.querySelector('#othersList').append(li);
+            document.querySelector('#othersListPanel').append(div);
     }
 
     name.value = '';
-    category.value = 'work';
+    category.value = '';
 })
 
-const uls = document.querySelectorAll('ul');
+const divs = document.querySelectorAll('div');
 
-for(let ul of uls) {
-    ul.addEventListener('click', function(e) {
+for(let div of divs) {
+    div.addEventListener('click', function(e) {
         const target = e.target;
         switch(target.nodeName) {
             //remove
             case 'BUTTON':
                 target.parentElement.remove();
+                console.log(target.parentElement);
                 break;
             //complete
-            case 'LI':
+            case 'P':
                 target.classList.toggle('complete');
                 break;
         }
